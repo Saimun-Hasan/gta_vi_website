@@ -1,16 +1,35 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from 'next/font/local'
 import "./globals.css";
+import App from "./app";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const gtaFont = localFont({
+  src: [
+    {
+      path: '../../public/assets/fonts/normal.woff',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../../public/assets/fonts/medium.woff',
+      weight: '500',
+      style: 'medium',
+    },
+    {
+      path: '../../public/assets/fonts/bold.woff',
+      weight: '700',
+      style: 'bold',
+    },
+    {
+      path: '../../public/assets/fonts/condensed.woff',
+      weight: '800',
+      style: 'extra-bold',
+    },
+  ],
+  variable: '--font-gta-deco',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,16 +38,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <App fontVars={`${gtaFont.variable}`}>
         {children}
-      </body>
+      </App>
     </html>
   );
 }
