@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GTA VI Landing Page Clone
 
-## Getting Started
+A fan-made recreation of the official Grand Theft Auto VI website built with Next.js, Zustand, GSAP, and Tailwind CSS.
 
-First, run the development server:
+## Disclaimer
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**This project is a fan-made clone of the official Grand Theft Auto VI website.** 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+I am not affiliated with Rockstar Games, Take-Two Interactive, or any of their subsidiaries. All images and content used in this project are the property of Rockstar Games and were sourced from https://www.rockstargames.com/VI.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**This project is for educational and non-commercial purposes only.**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Technologies
 
-## Learn More
+- [Next.js](https://nextjs.org/) - React framework for server-rendered applications
+- [Zustand](https://github.com/pmndrs/zustand) - Lightweight state management
+- [GSAP (GreenSock Animation Platform)](https://greensock.com/gsap/) - Professional-grade animation library
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Responsive recreation of the GTA VI landing page
+- Smooth animations using GSAP
+- State management with Zustand
+- Modern UI built with Tailwind CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Implementation Details
 
-## Deploy on Vercel
+### Animation System
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project uses GSAP for creating smooth, timeline-based animations that mimic the official website's interactive elements and transitions.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### State Management
+
+Zustand is used for lightweight state management across components, handling UI state, animation triggers, and content loading.
+
+### Responsive Design
+
+The clone is fully responsive and adapts to different screen sizes using Tailwind CSS utility classes.
+
+## License
+
+This project is for educational purposes only. All Grand Theft Auto VI related content, images, and properties belong to Rockstar Games.
+
+## Acknowledgments
+
+- [Rockstar Games](https://www.rockstargames.com/) for creating the Grand Theft Auto series
+- Special thanks to the open-source community for the amazing tools and libraries used in this project
