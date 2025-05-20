@@ -9,6 +9,7 @@ import Lenis from 'lenis';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+
     useGSAP(() => {
         if (typeof window === 'undefined') return;
         const lenis = new Lenis();
@@ -22,29 +23,60 @@ export default function Home() {
             gsap.ticker.lagSmoothing(0);
         }
 
-        const heroTimeline = gsap.timeline({
+
+        const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: '.trigger',
-                start: 'top+=10',
-                end: '+=800',
+                trigger: ".trigger",
                 scrub: 1,
                 pin: true,
                 markers: true,
+                start: 'top+=10',
+                end: '+=800',
             },
         });
 
-        gsap.set('.hero-image', { scale: 1.3, opacity: 1 });
-        gsap.set('.second-image', { scale: 1.3, opacity: 1 });
-        gsap.set('.comingMay', { scale: 1.1, opacity: 0 });
-        gsap.set('.mask-image', {
+        tl.set('.main_hero_logo', { scale: 1.3, opacity: 1 });
+        tl.set('.main_hero_cover', { scale: 1.3, opacity: 1 });
+        tl.set('.main_hero', {
+            opacity: 1,
             '--mask-size': '3000%',
-            '--mask-position': 'center'
+            '--mask-position': 'center',
         });
+        tl.set('.overlay', { opacity: 0 });
+        tl.set('.section-02', { visibility: "hidden", opacity: 0 });
 
-        heroTimeline.to('.hero-image', { scale: 1, opacity: 1, duration: 2 }, 0);
-        heroTimeline.to('.second-image', { scale: 1, opacity: 0, duration: 2 }, 0);
-        heroTimeline.to(
-            '.mask-image',
+
+
+        tl.to(
+            ".main_hero_logo",
+            {
+                scale: 1,
+                opacity: 0,
+                duration: 2,
+            },
+            "<"
+        );
+
+        tl.to(
+            ".main_hero_cover",
+            {
+                scale: 1,
+                opacity: 0,
+                duration: 2,
+            },
+            "<"
+        );
+        /* tl.to(
+            ".main_hero",
+            {
+                opacity: 0,
+                backgroundSize: "28dvh",
+                duration: 1.5,
+            },
+            0
+        ); */
+        tl.to(
+            '.main_hero',
             {
                 '--mask-size': '20%',
                 '--mask-position': 'center',
@@ -52,8 +84,14 @@ export default function Home() {
                 ease: "power1.Out"
             }, 0
         );
+        tl.set('.overlay', {
+            opacity: 1,
+            backgroundSize: "30dvh",
+            duration: 2
+        }, '<+=2');
 
-        heroTimeline.to(['.hero-image', '.mask-image'], {
+
+        tl.to(['.main_hero'], {
             opacity: 0,
             duration: 1,
             onComplete: () => {
@@ -61,92 +99,151 @@ export default function Home() {
             }
         }, 3);
 
-        gsap.timeline({
-            scrollTrigger: {
-                trigger: '.second-section',
-                start: 'center bottom',
-                end: 'center center',
-                scrub: true,
-                markers: true,
-            }
-        }).to('.comingMay', {
-            scale: 1,
-            opacity: 1,
-            duration: 20,
-            ease: "power1.in"
-        });
-    }, []);
+        tl.fromTo(
+            ".hero-text",
+            {
+                backgroundImage: `radial-gradient(
+                    circle at 50% 200vh,
+                    rgba(255, 214, 135, 0) 0,
+                    rgba(157, 47, 106, 0.5) 90vh,
+                    rgba(157, 47, 106, 0.8) 120vh,
+                    rgba(32, 31, 66, 0) 150vh
+                )`,
+            },
+            {
+                backgroundImage: `radial-gradient(circle at 50% 3.9575vh, rgb(255, 213, 133) 0vh,
+                    rgb(247, 77, 82) 50.011vh,
+                    rgb(145, 42, 105) 90.0183vh,
+                    rgba(32, 31, 66, 0) 140.599vh)`,
+                duration: 3,
+            },
+            "<1.2"
+        );
+
+        tl.fromTo(
+            ".coming_soon_logo",
+
+            {
+                opacity: 0,
+                maskImage: `radial-gradient(circle at 50% 145.835%, rgb(0, 0, 0) 36.11%, rgba(0, 0, 0, 0) 68.055%)`,
+            },
+            {
+                opacity: 1,
+                maskImage: `radial-gradient(
+                    circle at 50% 105.594%,
+                    rgb(0, 0, 0) 62.9372%,
+                    rgba(0, 0, 0, 0) 81.4686%
+                    )`,
+                duration: 3,
+            },
+            "<0.2"
+        );
+
+        tl.set(".main_hero", { opacity: 0 });
+
+        tl.to(".section-1", { scale: 0.85, duration: 3 }, "<-=3");
+
+        tl.set(
+            ".section-1",
+            {
+                maskImage: `radial-gradient(circle at 50% 16.1137vh, rgb(0, 0, 0) 96.1949vh, rgba(0, 0, 0, 0) 112.065vh)`,
+            },
+            "<+=2.1"
+        );
+
+        tl.to(
+            ".section-1",
+            {
+                maskImage: `radial-gradient(circle at 50% -40vh, rgb(0, 0, 0) 0vh, rgba(0, 0, 0, 0) 80vh)`,
+                duration: 2,
+            },
+            "<+=0.2"
+        );
+
+        tl.to(
+            ".coming_soon_logo",
+            {
+                opacity: 0,
+                duration: 2,
+            },
+            "<1.5"
+        );
+
+        tl.set(".section-1", { opacity: 0 });
+        tl.set(".section-02", { visibility: "visible" });
+
+        tl.to(".section-02", { opacity: 1, duration: 3 }, "<+=0.2");
+
+        tl.fromTo(
+            ".section-02",
+            {
+                backgroundImage: `radial-gradient(
+                    circle at 50% 200vh,
+                    rgba(255, 214, 135, 0) 0,
+                    rgba(157, 47, 106, 0.5) 90vh,
+                    rgba(157, 47, 106, 0.8) 120vh,
+                    rgba(32, 31, 66, 0) 150vh
+                )`,
+            },
+            {
+                backgroundImage: `radial-gradient(circle at 50% 3.9575vh, rgb(255, 213, 133) 0vh,
+                    rgb(247, 77, 82) 50.011vh,
+                    rgb(145, 42, 105) 90.0183vh,
+                    rgba(32, 31, 66, 0) 140.599vh)`,
+                duration: 3,
+            },
+            "<1.2"
+        );
+    });
 
     return (
-        <div className="grid grid-rows-[auto_1fr_auto] min-h-screen font-[family-name:var(--font-geist-sans)]">
-            <main className="flex flex-col gap-8 items-center">
-                <div className="w-full h-[100dvh] trigger">
-                    <div className="relative mask-image w-full h-full overflow-hidden"
-                        style={{
-                            WebkitMaskImage: `url('/assets/images/vistack.svg')`,
-                            maskImage: `url('/assets/images/vistack.svg')`,
-                            WebkitMaskRepeat: "no-repeat",
-                            maskRepeat: "no-repeat",
-                            WebkitMaskPosition: "var(--mask-position)",
-                            maskPosition: "var(--mask-position)",
-                            WebkitMaskSize: "var(--mask-size)",
-                            maskSize: "var(--mask-size)",
-                            WebkitMaskComposite: "source-in",
-                            maskComposite: "source-in",
-                            maskMode: "alpha",
-                            opacity: "var(--mask-opacity)",
-                            transition: "opacity 0.3s ease"
-                        }}>
-                        <Image
-                            src="/assets/images/Jason_and_Lucia_02/heroKeyArt.webp"
-                            alt="Jason and Lucia Hero Image"
-                            fill
-                            priority
-                            className="object-cover hero-image z-10"
-                            unoptimized={true}
-                        />
+        <>
+            <main className="trigger">
+
+                <div className="section-1">
+                    <div className="overlay"></div>
+
+                    <div className="main_hero overflow-hidden">
                         <Image
                             src="/assets/images/Jason_and_Lucia_02/heroKeyArt_2.webp"
                             alt="Jason and Lucia Hero Image"
                             fill
                             priority
-                            className="object-cover second-image z-20"
+                            className="main_hero_logo"
                             unoptimized={true}
                         />
+                        <Image
+                            src="/assets/images/Jason_and_Lucia_02/heroKeyArt.webp"
+                            alt="Jason and Lucia Hero Image"
+                            fill
+                            priority
+                            className="main_hero_cover"
+                            unoptimized={true}
+                        />
+                    </div>
+                    <div className="coming_soon_section">
+                        <div className="coming_soon_logo"></div>
+                        <div>
+                            <h3 className="font-gta font-bold hero-text">
+                                Coming<br />
+                                May 26<br />
+                                2026
+                            </h3>
+                        </div>
                     </div>
                 </div>
 
-                <section className="w-full max-w-6xl mx-auto py-12 h-[200vh]   comingMay" /* style={{
-                    opacity: "var(--mask-opacity, 0)",
-                    maskImage: "radial-gradient(circle at 50% -34.4444vh, rgb(0, 0, 0) 9.5238vh, rgba(0, 0, 0, 0) 83.1746vh)",
-                    WebkitMaskImage: "radial-gradient(circle at 50% -34.4444vh, rgb(0, 0, 0) 9.5238vh, rgba(0, 0, 0, 0) 83.1746vh)",
-                    transition: "opacity 0.5s ease"
-                }} */>
-                    <div className="flex flex-col items-center justify-center second-section">
-                        <Image
-                            src="/assets/images/vi.webp"
-                            alt="Jason and Lucia Hero Image"
-                            width={350}
-                            height={350}
-                            unoptimized={true}
-                        />
-                        <h3 className="text-[16vh] text-center uppercase bg-clip-text font-gta font-bold leading-[8.5rem] mt-5"
-                            style={{
-                                color: "#ffb0c4",
-                                letterSpacing: '-.0125em',
-                                backgroundImage: "radial-gradient(circle at 50% 61.6666vh, rgb(255, 212, 129) 0vh, rgb(237, 70, 108) 50vh, rgb(124, 34, 102) 90vh, rgba(32, 31, 66, 0) 124.537vh)",
-                                WebkitTextFillColor: "transparent"
-                            }}
-                        >
-                            COMING
-                            <br />
-                            MAY 26
-                            <br />
-                            2026
-                        </h3>
-                    </div>
-                </section>
-            </main >
+                <div className="section-02">
+                    <h3 className="font-gta font-bold">Vice City, USA.</h3>
+                    <p className="font-gta">
+                        Jason and Lucia have always known the deck is stacked against them.
+                        But when an easy score goes wrong, they find themselves on the darkest
+                        side of the sunniest place in America, in the middle of a criminal
+                        conspiracy stretching across the state of Leonida — forced to rely on
+                        each other more than ever if they want to make it out alive.
+                    </p>
+                </div>
+            </main>
 
             <footer className="py-8 flex gap-6 flex-wrap items-center justify-center">
                 <a
@@ -195,6 +292,6 @@ export default function Home() {
                     Go to nextjs.org →
                 </a>
             </footer>
-        </div >
+        </ >
     );
 }

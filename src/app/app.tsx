@@ -15,7 +15,7 @@ export default function App({
   const isSheetOpen = useStore((state) => state.isSheetOpen);
 
   return (
-    <body className={`${fontVars} antialiased dark min-h-full ${isSheetOpen ? 'overflow-hidden' : 'overflow-auto'}`}>
+    <body className={`${fontVars} antialiased dark min-h-[100dvh] ${isSheetOpen ? 'overflow-hidden' : 'overflow-auto'}`}>
       <Nav />
       {children}
     </body>

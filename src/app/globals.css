@@ -131,4 +131,178 @@
   .text-fluid {
     font-size: clamp(1rem, 1vw, 1.6rem);
   }
+
+  .trigger {
+    min-height: 100svh;
+    position: relative;
+    background: linear-gradient(
+      223.17deg,
+      rgb(28, 24, 41) 0%,
+      rgb(27, 24, 40) 8.61%,
+      rgb(25, 23, 36) 17.21%,
+      rgb(22, 21, 32) 25.82%,
+      rgb(20, 19, 28) 34.42%,
+      rgb(18, 18, 24) 43.03%,
+      rgb(17, 17, 23) 51.63%
+    );
+  }
+
+  .overlay {
+    width: 100%;
+    height: 100dvh;
+    position: absolute;
+    background-image: url("/assets/images/vistack.svg");
+    background-position: 50% 41.7%;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    opacity: var(--mask-opacity);
+    transition: opacity 0.3s ease;
+    padding-bottom: 200px;
+  }
+
+  .main_hero {
+    width: 100%;
+    height: 100dvh;
+    position: relative;
+    -webkit-mask-image: url("/assets/images/vistack.svg");
+    mask-image: url("/assets/images/vistack.svg");
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: var(--mask-position);
+    mask-position: var(--mask-position);
+    -webkit-mask-size: var(--mask-size);
+    mask-size: var(--mask-size);
+    mask-mode: alpha;
+    opacity: var(--mask-opacity);
+    transition: opacity 0.3s ease;
+  }
+
+  .main_hero_cover {
+    width: 100%;
+    height: 100dvh;
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+  }
+
+  .main_hero_logo {
+    width: 100%;
+    height: 100dvh;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    object-fit: cover;
+  }
+
+  .coming_soon_section {
+    width: 100%;
+    height: 100dvh;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    object-fit: cover;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .coming_soon_logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-image: url("/assets/images/vi.webp");
+    background-repeat: no-repeat;
+    background-position: 50% 41.7%;
+    background-size: 30vh;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    padding-bottom: 200px;
+    height: 100dvh;
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-text {
+    color: #ffb0c4;
+    text-align: center;
+    text-transform: uppercase;
+    background-image: radial-gradient(
+      circle at 50% 200dvh,
+      rgba(255, 214, 135, 0) 0,
+      rgba(157, 47, 106, 0.5) 90dvh,
+      rgba(157, 47, 106, 0.8) 120dvh,
+      rgba(32, 31, 66, 0) 150dvh
+    );
+    -webkit-text-fill-color: transparent;
+    font-size: 4.5rem;
+    background-clip: text;
+    width: 100%;
+    line-height: 0.9;
+    margin-top: 55%;
+  }
+
+  .section-02 {
+    width: 100%;
+    height: 100dvh;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    object-fit: cover;
+    background-image: radial-gradient(
+      circle at 50% 200dvh,
+      rgba(255, 214, 135, 0) 0,
+      rgba(157, 47, 106, 0.5) 90dvh,
+      rgba(157, 47, 106, 0.8) 120dvh,
+      rgba(32, 31, 66, 0) 150dvh
+    );
+    -webkit-text-fill-color: transparent;
+    font-size: 6rem;
+    background-clip: text;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    padding: 0 2rem;
+    visibility: hidden;
+  }
+
+  .section-02 p {
+    max-width: 90%;
+    font-size: 1rem;
+  }
+
+  .section-02 h3 {
+    font-size: 2.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-text {
+      font-size: 6rem;
+    }
+
+    .scroll-indicator {
+      bottom: 30px;
+    }
+
+    .section-02 {
+      margin: 0 auto;
+      max-width: 60%;
+      padding: 0;
+    }
+
+    .section-02 p {
+      max-width: 90%;
+      font-size: 2rem;
+    }
+
+    .section-02 h3 {
+      font-size: 3.5rem;
+    }
+  }
 }
